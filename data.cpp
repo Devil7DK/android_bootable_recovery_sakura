@@ -920,6 +920,8 @@ void DataManager::SetDefaultValues()
 
 	mData.SetValue("tw_enable_adb_backup", "0");
 
+	mPersist.SetValue(TW_CURRENT_DEVICE, "0");
+
 	if (TWFunc::Path_Exists("/sbin/magiskboot"))
 		mConst.SetValue("tw_has_repack_tools", "1");
 	else
@@ -1141,4 +1143,37 @@ void DataManager::Vibrate(const string& varName)
 		vibrate(vib_value);
 	}
 #endif
+}
+
+void DataManager::ChangeDevice()
+{
+	int device;
+	const char props[6][18] = {"ro.product.device", "ro.build.product", "ro.omni.device", "ro.product.name"};
+
+	GetValue(TW_CURRENT_DEVICE, device);
+
+	std::string codename = "sakura";
+	std::string modname = "sakura_global";
+	switch(device) {
+		case 0:
+			LOGINFO("Changing Device: 'sakura'\n");
+			codename="sakura";
+			modname="sakura_global";
+			break;
+		case 1:
+			LOGINFO("Changing Device: 'sakura_india'\n");
+			codename="sakura_india";
+			modname="sakura_india";
+			break;
+	}
+
+	for (int i = 0; i < 4; i++) {
+		std::string command_ = std::string("setpropex ") + std::string(props[i]) + std::string(" ") + codename;
+		TWFunc::Exec_Cmd(command_);
+	}
+
+	std::string command = "setpropex ro.product.mod_device " + modname;
+	TWFunc::Exec_Cmd(command);
+
+	SetValue(TW_CURRENT_DEVICE, device, 1);
 }

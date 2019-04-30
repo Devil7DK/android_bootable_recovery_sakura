@@ -199,6 +199,7 @@ GUIAction::GUIAction(xml_node<>* node)
 		ADD_ACTION(setlanguage);
 		ADD_ACTION(checkforapp);
 		ADD_ACTION(togglebacklight);
+		ADD_ACTION(changedevice);
 
 		// remember actions that run in the caller thread
 		for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -1889,6 +1890,12 @@ int GUIAction::togglebacklight(std::string arg __unused)
 {
 	blankTimer.toggleBlank();
 	return 0;
+}
+
+int GUIAction::changedevice(std::string arg __unused)
+{
+	DataManager::ChangeDevice();
+        return 0;
 }
 
 int GUIAction::setbootslot(std::string arg)

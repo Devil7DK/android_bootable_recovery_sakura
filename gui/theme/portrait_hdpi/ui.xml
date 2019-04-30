@@ -68,6 +68,9 @@
 		<image name="kb_arrow_right" filename="kb_arrow_right" retainaspect="1"/>
 		<image name="kb_arrow_up" filename="kb_arrow_up" retainaspect="1"/>
 		<image name="kb_arrow_down" filename="kb_arrow_down" retainaspect="1"/>
+
+		<image name="device_global" filename="device_global" retainaspect="1"/>
+		<image name="device_india" filename="device_india" retainaspect="1"/>
 	</resources>
 
 	<variables>
@@ -222,6 +225,9 @@
 		<variable name="pattern_dot_dia" value="32"/>
 		<variable name="pattern_line_w" value="12"/>
 		<variable name="pattern_size" value="828"/>
+
+		<variable name="change_device_x" value="974"/>
+		<variable name="change_device_y" value="165"/>
 	</variables>
 
 	<mousecursor>

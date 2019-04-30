@@ -188,6 +188,28 @@
 				<text>%tw_version%</text>
 			</text>
 
+			<button>
+				<condition var1="tw_current_device" var2="0"/>
+				<placement x="%change_device_x%" y="%change_device_y%" placement="4"/>
+				<image resource="device_global"/>
+				<actions>
+					<action function="set">tw_current_device=1</action>
+					<action function="changedevice"/>
+					<action function="page">main</action>
+				</actions>
+			</button>
+
+			<button>
+				<condition var1="tw_current_device" var2="1"/>
+				<placement x="%change_device_x%" y="%change_device_y%" placement="4"/>
+				<image resource="device_india"/>
+				<actions>
+					<action function="set">tw_current_device=0</action>
+					<action function="changedevice"/>
+					<action function="page">main</action>
+				</actions>
+			</button>
+
 			<button style="main_button">
 				<placement x="%indent%" y="%row2a_y%"/>
 				<text>{@install_btn=Install}</text>

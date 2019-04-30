@@ -64,6 +64,9 @@ public:
 	static string GetCurrentStoragePath(void);
 	static string GetSettingsStoragePath(void);
 
+	// Custom
+	static void ChangeDevice(void);
+
 protected:
 	static string mBackingFile;
 	static int mInitialized;
