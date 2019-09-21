@@ -210,6 +210,24 @@
 				</actions>
 			</button>
 
+			<button>
+				<condition var1="tw_sar_enabled" var2="1"/>
+				<placement x="%config_sar_x%" y="%config_sar_y%" placement="4"/>
+				<image resource="sar_enabled"/>
+				<actions>
+					<action function="overlay">dialog_config_sar</action>
+				</actions>
+			</button>
+
+			<button>
+				<condition var1="tw_sar_enabled" var2="0"/>
+				<placement x="%config_sar_x%" y="%config_sar_y%" placement="4"/>
+				<image resource="sar_disabled"/>
+				<actions>
+					<action function="overlay">dialog_config_sar</action>
+				</actions>
+			</button>
+
 			<button style="main_button">
 				<placement x="%indent%" y="%row2a_y%"/>
 				<text>{@install_btn=Install}</text>
@@ -261,6 +279,46 @@
 				<text>{@reboot_btn=Reboot}</text>
 				<action function="page">reboot</action>
 			</button>
+		</page>
+
+		<page name="dialog_config_sar">
+			<background color="%darktransparent%"/>
+
+			<image>
+				<placement x="%dialog_x%" y="%dialog_y%"/>
+				<image resource="dialog"/>
+			</image>
+
+			<button>
+				<placement x="%dialog_cancel_x%" y="%dialog_cancel_y%" placement="4"/>
+				<image resource="btn_cancel"/>
+				<action function="overlay"/>
+			</button>
+
+			<button>
+				<condition var1="tw_sar_enabled" var2="0"/>
+				<placement x="%dialog_config_x%" y="%dialog_config_y%" placement="4"/>
+				<image resource="btn_disabled"/>
+				<actions>
+					<action function="configsar">1</action>
+					<action function="overlay"/>
+				</actions>
+			</button>
+
+			<button>
+				<condition var1="tw_sar_enabled" var2="1"/>
+				<placement x="%dialog_config_x%" y="%dialog_config_y%" placement="4"/>
+				<image resource="btn_enabled"/>
+				<actions>
+					<action function="configsar">0</action>
+					<action function="overlay"/>
+				</actions>
+			</button>
+
+			<action>
+				<touch key="power+voldown"/>
+				<action function="screenshot"/>
+			</action>
 		</page>
 
 		<page name="install">

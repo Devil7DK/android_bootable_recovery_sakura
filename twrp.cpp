@@ -253,6 +253,15 @@ int main(int argc, char **argv) {
 		}
 	}
 
+        // SAR Mode - Check after processing fstab as settings need to be loaded from persist
+        if (DataManager::GetIntValue(TW_SAR_ENABLED) == 1) {
+                LOGINFO("Updating ANDROID_ROOT to '/system_root'...\n");
+                setenv("ANDROID_ROOT", "/system_root", 1);
+        } else {
+                LOGINFO("Updating ANDROID_ROOT to '/system'...\n");
+                setenv("ANDROID_ROOT", "/system", 1);
+        }
+
 	// Fixup the RTC clock on devices which require it
 	if (crash_counter == 0)
 		TWFunc::Fixup_Time_On_Boot();

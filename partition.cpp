@@ -276,11 +276,14 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 	char full_line[MAX_FSTAB_LINE_LENGTH];
 	char twflags[MAX_FSTAB_LINE_LENGTH] = "";
 	char* ptr;
+	bool sar_enabled = false;
 	int line_len = strlen(fstab_line), index = 0, item_index = 0;
 	bool skip = false;
 	int fstab_version = 1, mount_point_index = 0, fs_index = 1, block_device_index = 2;
 	TWPartition *additional_entry = NULL;
 	std::map<string, Flags_Map>::iterator it;
+
+	sar_enabled = DataManager::GetIntValue(TW_SAR_ENABLED);
 
 	strlcpy(full_line, fstab_line, sizeof(full_line));
 	for (index = 0; index < line_len; index++) {
@@ -314,6 +317,10 @@ bool TWPartition::Process_Fstab_Line(const char *fstab_line, bool Display_Error,
 				}
 			}
 			LOGINFO("Processing '%s'\n", Mount_Point.c_str());
+			if (sar_enabled && strcmp(Mount_Point.c_str(), "/system")==0){
+				LOGINFO("SAR Mode: System-As-Root enabled. Changing '%s' mount point to '/system_root'\n", Mount_Point.c_str());
+				Mount_Point = "/system_root";
+			}
 			Backup_Path = Mount_Point;
 			Storage_Path = Mount_Point;
 			Display_Name = ptr + 1;

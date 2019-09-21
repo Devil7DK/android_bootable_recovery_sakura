@@ -328,6 +328,7 @@ protected:
 	int setbrightness(std::string arg);
 	int checkforapp(std::string arg);
 	int changedevice(std::string arg);
+	int configsar(std::string arg);
 
 	// (originally) threaded actions
 	int fileexists(std::string arg);

@@ -71,6 +71,13 @@
 
 		<image name="device_global" filename="device_global" retainaspect="1"/>
 		<image name="device_india" filename="device_india" retainaspect="1"/>
+		<image name="sar_enabled" filename="sar_enabled" retainaspect="1"/>
+		<image name="sar_disabled" filename="sar_disabled" retainaspect="1"/>
+
+		<image name="dialog" filename="dialog" retainaspect="0"/>
+		<image name="btn_enabled" filename="btn_enabled" retainaspect="0"/>
+		<image name="btn_disabled" filename="btn_disabled" retainaspect="0"/>
+		<image name="btn_cancel" filename="btn_cancel" retainaspect="0"/>
 	</resources>
 
 	<variables>
@@ -228,6 +235,16 @@
 
 		<variable name="change_device_x" value="974"/>
 		<variable name="change_device_y" value="165"/>
+		<variable name="config_sar_x" value="874"/>
+		<variable name="config_sar_y" value="165"/>
+
+		<variable name="darktransparent" value="#000000BB"/>
+		<variable name="dialog_x" value="40"/>
+		<variable name="dialog_y" value="600"/>
+		<variable name="dialog_cancel_x" value="535"/>
+		<variable name="dialog_cancel_y" value="1360"/>
+		<variable name="dialog_config_x" value="545"/>
+		<variable name="dialog_config_y" value="1200"/>
 	</variables>
 
 	<mousecursor>
