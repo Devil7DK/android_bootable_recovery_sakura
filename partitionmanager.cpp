@@ -2832,7 +2832,9 @@ string TWPartitionManager::Get_Active_Slot_Display() {
 
 string TWPartitionManager::Get_Android_Root_Path() {
 	std::string Android_Root = getenv("ANDROID_ROOT");
-	if (Android_Root == "")
+	if (DataManager::GetIntValue(TW_SAR_ENABLED) == 1)
+		Android_Root = "/system_root";
+	else if (Android_Root == "")
 		Android_Root = "/system";
 	return Android_Root;
 }

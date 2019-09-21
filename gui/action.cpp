@@ -200,6 +200,7 @@ GUIAction::GUIAction(xml_node<>* node)
 		ADD_ACTION(checkforapp);
 		ADD_ACTION(togglebacklight);
 		ADD_ACTION(changedevice);
+		ADD_ACTION(configsar);
 
 		// remember actions that run in the caller thread
 		for (mapFunc::const_iterator it = mf.begin(); it != mf.end(); ++it)
@@ -1896,6 +1897,12 @@ int GUIAction::changedevice(std::string arg __unused)
 {
 	DataManager::ChangeDevice();
         return 0;
+}
+
+int GUIAction::configsar(std::string arg)
+{
+	DataManager::ConfigSAR(std::stoi(arg));
+	return 0;
 }
 
 int GUIAction::setbootslot(std::string arg)

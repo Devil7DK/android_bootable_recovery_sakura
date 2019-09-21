@@ -142,6 +142,7 @@
 #define TW_NO_SHA2                  "tw_no_sha2"
 
 #define TW_CURRENT_DEVICE           "tw_current_device"
+#define TW_SAR_ENABLED              "tw_sar_enabled"
 
 // Also used:
 //   tw_boot_is_mountable

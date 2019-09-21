@@ -66,6 +66,7 @@ public:
 
 	// Custom
 	static void ChangeDevice(void);
+	static void ConfigSAR(int);
 
 protected:
 	static string mBackingFile;
